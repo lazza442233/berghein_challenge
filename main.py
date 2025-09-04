@@ -1,7 +1,5 @@
-# main.py
-
 from src.berghain_challenge.scenarios.scenario_definitions import SCENARIO_1
-from src.berghain_challenge.bouncers.greedy_bouncer import GreedyBouncer
+from src.berghain_challenge.bouncers.dynamic_programming_bouncer import DpBouncer
 from src.berghain_challenge.simulation.core_loop import run_simulation
 
 
@@ -19,7 +17,10 @@ def main():
     print("-" * 20)
 
     # 2. Initialize the Bouncer
-    bouncer = GreedyBouncer()
+    # --- CHANGE 2: Instantiate DpBouncer ---
+    # Using slightly adjusted end_threshold
+    bouncer = DpBouncer(start_threshold=0.01, end_threshold=0.02)
+    # bouncer = GreedyBouncer() # Comment out or delete
     print(f"Using Bouncer: '{bouncer.__class__.__name__}'")
 
     # 3. Run the Simulation
